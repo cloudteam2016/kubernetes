@@ -435,7 +435,7 @@ Features for this release were tracked via the use of the [kubernetes/features](
 - **Node**
   - [alpha] Added ability to preserve access to host userns when userns remapping is enabled in container runtime ([kubernetes/features#127](https://github.com/kubernetes/features/issues/127))
   - [alpha] Introducing the v1alpha1 CRI API to allow pluggable container runtimes; an experimental docker-CRI integration is ready for testing and feedback. ([docs](https://github.com/kubernetes/community/blob/master/contributors/devel/container-runtime-interface.md)) ([kubernetes/features#54](https://github.com/kubernetes/features/issues/54))
-  - [alpha] Kubelet launches container in a per pod cgroup hiearchy based on quality of service tier ([kubernetes/features#126](https://github.com/kubernetes/features/issues/126))
+  - [alpha] Kubelet launches container in a per pod cgroup hierarchy based on quality of service tier ([kubernetes/features#126](https://github.com/kubernetes/features/issues/126))
   - [beta] Kubelet integrates with memcg notification API to detect when a hard eviction threshold is crossed ([kubernetes/features#125](https://github.com/kubernetes/features/issues/125))
   - [beta] Introducing the beta version containerized node conformance test gcr.io/google_containers/node-test:0.2 for users to verify node setup. ([docs](http://kubernetes.io/docs/admin/node-conformance/)) ([kubernetes/features#84](https://github.com/kubernetes/features/issues/84))
 - **Scheduling**
@@ -1650,17 +1650,17 @@ binary | sha256 hash
 ## Major Themes
 
 - **Simplified User Experience**
-  - Easier to get a cluster up and running (eg: `kubeadm`, intra-cluster bootstrapping)
-  - Easier to understand a cluster (eg: API audit logs, server-based API defaults)
-- **Stateful Appplication Support**
-  - Enhanced persistence capabilities (eg: `StorageClasses`, new volume plugins)
-  - New resources and scheduler features (eg: `ScheduledJob` resource, pod/node affinity/anti-affinity)
+  - Easier to get a cluster up and running (e.g.: `kubeadm`, intra-cluster bootstrapping)
+  - Easier to understand a cluster (e.g.: API audit logs, server-based API defaults)
+- **Stateful Application Support**
+  - Enhanced persistence capabilities (e.g.: `StorageClasses`, new volume plugins)
+  - New resources and scheduler features (e.g.: `ScheduledJob` resource, pod/node affinity/anti-affinity)
 - **Cluster Federation**
   - Global Multi-cluster HTTP(S) Ingress across GCE and GKE clusters.
   - Expanded support for federated hybrid-cloud resources including ReplicaSets, Secrets, Namespaces and Events.
 - **Security**
-  - Increased pod-level security granularity (eg: Container Image Policies, AppArmor and `sysctl` support)
-  - Increased cluster-level security granularity (eg: Access Review API)
+  - Increased pod-level security granularity (e.g.: Container Image Policies, AppArmor and `sysctl` support)
+  - Increased cluster-level security granularity (e.g.: Access Review API)
 
 ## Features
 
@@ -1717,7 +1717,7 @@ This is the first release tracked via the use of the [kubernetes/features](https
 - **Scheduling**
   - [alpha] Allows pods to require or prohibit (or prefer or prefer not) co-scheduling on the same node (or zone or other topology domain) as another set of pods. ([docs](http://kubernetes.io/docs/user-guide/node-selection/) ([kubernetes/features#51](https://github.com/kubernetes/features/issues/51))
 - **Storage**
-  - [beta] Persistant Volume provisioning now supports multiple provisioners using StorageClass configuration. ([docs](http://kubernetes.io/docs/user-guide/persistent-volumes/)) ([kubernetes/features#36](https://github.com/kubernetes/features/issues/36))
+  - [beta] Persistent Volume provisioning now supports multiple provisioners using StorageClass configuration. ([docs](http://kubernetes.io/docs/user-guide/persistent-volumes/)) ([kubernetes/features#36](https://github.com/kubernetes/features/issues/36))
   - [stable] New volume plugin for the Quobyte Distributed File System ([docs](http://kubernetes.io/docs/user-guide/volumes/#quobyte)) ([kubernetes/features#80](https://github.com/kubernetes/features/issues/80))
   - [stable] New volume plugin for Azure Data Disk ([docs](http://kubernetes.io/docs/user-guide/volumes/#azurediskvolume)) ([kubernetes/features#79](https://github.com/kubernetes/features/issues/79))
 - **UI**
@@ -1769,7 +1769,7 @@ If you use an old version kubectl to delete a replication controller or replicas
 - If you upgrade your apiserver to 1.4.x but leave your kubelets at 1.3.x, they will not report init container status, but init containers will work properly.  Upgrading kubelets to 1.4.x fixes this.
 - The NamespaceExists and NamespaceAutoProvision admission controllers have been removed, use the NamespaceLifecycle admission controller instead (#31250, @derekwaynecarr)
 - If upgrading Cluster Federation components from 1.3.x, the `federation-apiserver` and `federation-controller-manager` binaries have been folded into `hyperkube`.  Please switch to using that instead.  (#29929, @madhusudancs)
-- If you are using the PodSecurityPolicy feature (eg: `kubectl get podsecuritypolicy` does not error, and returns one or more objects), be aware that init containers have moved from alpha to beta.  If there are any pods with the key `pods.beta.kubernetes.io/init-containers`, then that pod may not have been filtered by the PodSecurityPolicy. You should find such pods and either delete them or audit them to ensure they do not use features that you intend to be blocked by PodSecurityPolicy. (#31026, @erictune)
+- If you are using the PodSecurityPolicy feature (e.g.: `kubectl get podsecuritypolicy` does not error, and returns one or more objects), be aware that init containers have moved from alpha to beta.  If there are any pods with the key `pods.beta.kubernetes.io/init-containers`, then that pod may not have been filtered by the PodSecurityPolicy. You should find such pods and either delete them or audit them to ensure they do not use features that you intend to be blocked by PodSecurityPolicy. (#31026, @erictune)
 - If upgrading Cluster Federation components from 1.3.x, please ensure your cluster name is a valid DNS label (#30956, @nikhiljindal)
 - kubelet's `--config` flag has been deprecated, use `--pod-manifest-path` instead (#29999, @mtaufen)
 - If upgrading Cluster Federation components from 1.3.x, be aware the federation-controller-manager now looks for a different secret name.  Run the following to migrate (#28938, @madhusudancs)
@@ -3257,7 +3257,7 @@ binary | sha1 hash | md5 hash
 * Add a rate limiter to the GCE cloudprovider ([#23019](https://github.com/kubernetes/kubernetes/pull/23019), [@alex-mohr](https://github.com/alex-mohr))
 * Add a Deployment example for kubectl expose. ([#23222](https://github.com/kubernetes/kubernetes/pull/23222), [@madhusudancs](https://github.com/madhusudancs))
 * Use versioned object when computing patch ([#23145](https://github.com/kubernetes/kubernetes/pull/23145), [@liggitt](https://github.com/liggitt))
-* kubelet: send all recevied pods in one update ([#23141](https://github.com/kubernetes/kubernetes/pull/23141), [@yujuhong](https://github.com/yujuhong))
+* kubelet: send all received pods in one update ([#23141](https://github.com/kubernetes/kubernetes/pull/23141), [@yujuhong](https://github.com/yujuhong))
 * Add a SSHKey sync check to the master's healthz (when using SSHTunnels). ([#23167](https://github.com/kubernetes/kubernetes/pull/23167), [@cjcullen](https://github.com/cjcullen))
 * Validate minimum CPU limits to be >= 10m ([#23143](https://github.com/kubernetes/kubernetes/pull/23143), [@vishh](https://github.com/vishh))
 * Fix controller-manager race condition issue which cause endpoints flush during restart ([#23035](https://github.com/kubernetes/kubernetes/pull/23035), [@xinxiaogang](https://github.com/xinxiaogang))
@@ -3302,7 +3302,7 @@ binary | sha1 hash | md5 hash
 * Add a rate limiter to the GCE cloudprovider ([#23019](https://github.com/kubernetes/kubernetes/pull/23019), [@alex-mohr](https://github.com/alex-mohr))
 * Add a Deployment example for kubectl expose. ([#23222](https://github.com/kubernetes/kubernetes/pull/23222), [@madhusudancs](https://github.com/madhusudancs))
 * Use versioned object when computing patch ([#23145](https://github.com/kubernetes/kubernetes/pull/23145), [@liggitt](https://github.com/liggitt))
-* kubelet: send all recevied pods in one update ([#23141](https://github.com/kubernetes/kubernetes/pull/23141), [@yujuhong](https://github.com/yujuhong))
+* kubelet: send all received pods in one update ([#23141](https://github.com/kubernetes/kubernetes/pull/23141), [@yujuhong](https://github.com/yujuhong))
 * Add a SSHKey sync check to the master's healthz (when using SSHTunnels). ([#23167](https://github.com/kubernetes/kubernetes/pull/23167), [@cjcullen](https://github.com/cjcullen))
 * Validate minimum CPU limits to be >= 10m ([#23143](https://github.com/kubernetes/kubernetes/pull/23143), [@vishh](https://github.com/vishh))
 * Fix controller-manager race condition issue which cause endpoints flush during restart ([#23035](https://github.com/kubernetes/kubernetes/pull/23035), [@xinxiaogang](https://github.com/xinxiaogang))
